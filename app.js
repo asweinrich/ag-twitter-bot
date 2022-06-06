@@ -15,5 +15,5 @@ function formatAndSendTweet() {
 // Poll every 60 seconds & retrieve all tweets from AG to respond to
 setInterval(() => {
     const lastTweet = moment().startOf('minute').subtract(59, "seconds").unix();
-    return formatAndSendTweet();
+    //return formatAndSendTweet();
 }, 60000);
