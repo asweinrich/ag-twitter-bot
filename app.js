@@ -5,7 +5,7 @@ const tweet = require('./tweet');
 const cache = require('./cache');
 
 // Format tweet text
-function formatAndSendTweet(event) {
+function formatAndSendTweet() {
     // Handle both individual items + bundle sales
     const tweetText = `test tweet!`;
     console.log(tweetText);
@@ -15,5 +15,5 @@ function formatAndSendTweet(event) {
 // Poll every 60 seconds & retrieve all tweets from AG to respond to
 setInterval(() => {
     const lastTweet = moment().startOf('minute').subtract(59, "seconds").unix();
-    return formatAndSendTweet(event);
+    return formatAndSendTweet();
 }, 60000);
