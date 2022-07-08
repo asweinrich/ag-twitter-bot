@@ -10,6 +10,19 @@ function formatAndSendTweet(event) {
     // Handle both individual items + bundle sales
     const assetName = _.get(event, ['asset', 'name'], _.get(event, ['asset_bundle', 'name']));
     const openseaLink = _.get(event, ['asset', 'permalink'], _.get(event, ['asset_bundle', 'permalink']));
+    
+    const finalBuyer = '';
+    
+    const buyerAddr = _.get(event, ['winner_account', 'address']).slice(0, 6);
+    if(_.get(event, ['winner_account', 'user', 'username']) != null) {
+        const buyerName = _.get(event, ['winner_account', 'user', 'username']);
+        if(buyerName.length > 10) {
+            buyerName = buyerName.slice(0, 10) + '...';
+        }
+        finalBuyer = buyerName;
+    } else {
+        finalBuyer = buyerAddr;
+    }      
 
     const totalPrice = _.get(event, 'total_price');
 
@@ -21,7 +34,7 @@ function formatAndSendTweet(event) {
     const formattedEthPrice = formattedUnits * tokenEthPrice;
     const formattedUsdPrice = formattedUnits * tokenUsdPrice;
 
-    const tweetText = `${assetName} bought for ${formattedEthPrice}${ethers.constants.EtherSymbol} ($${Number(formattedUsdPrice).toFixed(2)}) #NFT ${openseaLink}`;
+    const tweetText = `Federally wanted individual ${assetName} was captured by ${finalBuyer} for ${formattedEthPrice}${ethers.constants.EtherSymbol} ($${Number(formattedUsdPrice).toFixed(2)}) ${openseaLink}`;
 
     console.log(tweetText);
 
@@ -40,7 +53,8 @@ function formatAndSendTweet(event) {
 
 // Poll OpenSea every 60 seconds & retrieve all sales for a given collection in either the time since the last sale OR in the last minute
 setInterval(() => {
-    const lastSaleTime = cache.get('lastSaleTime', null) || moment().startOf('minute').subtract(59, "seconds").unix();
+    const lastSaleTime = cache.get('lastSaleTime', null) || moment().startOf('week').unix();
+          //moment().startOf('minute').subtract(59, "seconds").unix();
 
     console.log(`Last sale (in seconds since Unix epoch): ${cache.get('lastSaleTime', null)}`);
 
