@@ -34,7 +34,7 @@ function formatAndSendTweet(event) {
     const formattedEthPrice = formattedUnits * tokenEthPrice;
     const formattedUsdPrice = formattedUnits * tokenUsdPrice;
 
-    const tweetText = `Federally wanted individual ${assetName} was captured by ${finalBuyer} for ${formattedEthPrice}${ethers.constants.EtherSymbol} ($${Number(formattedUsdPrice).toFixed(2)}) ${openseaLink}`;
+    const tweetText = `The federally wanted individual known as ${assetName} was captured by ${finalBuyer} for ${formattedEthPrice}${ethers.constants.EtherSymbol} ($${Number(formattedUsdPrice).toFixed(2)}) ${openseaLink}`;
 
     console.log(tweetText);
 
