@@ -4,12 +4,6 @@ A (quickly put together) bot that monitors Opensea sales for a given collection 
 
 **⚠️ IMPORTANT ⚠️** To track sales across multiple marketplaces (LooksRare etc.), use [NFT Sales Twitter Bot](https://github.com/dsgriffin/nft-sales-twitter-bot)
 
-## Donations 💵
-
-If you find this script/repo useful for your project, any ETH/Altcoin/NFT donations are greatly appreciated 🙏
-
-Eth Address: 0xDCA88f66CEc8972D23DE7d5e69c40E087C92132f
-
 ## Requirements 📝
 
 - [Twitter Developer Account](https://developer.twitter.com/en/apply-for-access) (with [Elevated Access](https://developer.twitter.com/en/portal/products/elevated), as we need v1.1 endpoint access)
