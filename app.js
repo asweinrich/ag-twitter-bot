@@ -11,7 +11,7 @@ function formatAndSendTweet(event) {
     const assetName = _.get(event, ['asset', 'name'], _.get(event, ['asset_bundle', 'name']));
     const openseaLink = _.get(event, ['asset', 'permalink'], _.get(event, ['asset_bundle', 'permalink']));
     
-    const finalBuyer = '';
+    let finalBuyer = '';
     
     const buyerAddr = _.get(event, ['winner_account', 'address']).slice(0, 6);
     if(_.get(event, ['winner_account', 'user', 'username']) != null) {
