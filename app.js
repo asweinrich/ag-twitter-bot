@@ -15,7 +15,7 @@ function formatAndSendTweet(event) {
     
     const buyerAddr = _.get(event, ['winner_account', 'address']).slice(2, 6);
     if(_.get(event, ['winner_account', 'user', 'username']) != null) {
-        const buyerName = _.get(event, ['winner_account', 'user', 'username']);
+        let buyerName = _.get(event, ['winner_account', 'user', 'username']);
         if(buyerName.length > 10) {
             buyerName = buyerName.slice(0, 10) + '...';
         }
