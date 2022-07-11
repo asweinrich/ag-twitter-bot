@@ -13,7 +13,7 @@ function formatAndSendTweet(event) {
     
     let finalBuyer = '';
     
-    const buyerAddr = _.get(event, ['winner_account', 'address']).slice(0, 6);
+    const buyerAddr = _.get(event, ['winner_account', 'address']).slice(2, 6);
     if(_.get(event, ['winner_account', 'user', 'username']) != null) {
         const buyerName = _.get(event, ['winner_account', 'user', 'username']);
         if(buyerName.length > 10) {
@@ -53,7 +53,8 @@ function formatAndSendTweet(event) {
 
 // Poll OpenSea every 60 seconds & retrieve all sales for a given collection in either the time since the last sale OR in the last minute
 setInterval(() => {
-    const lastSaleTime = cache.get('lastSaleTime', null) || moment().startOf('minute').subtract(59, "seconds").unix();
+    const lastSaleTime = cache.get('lastSaleTime', null) || moment().startOf('day').unix();
+          //moment().startOf('minute').subtract(59, "seconds").unix();
 
     console.log(`Last sale (in seconds since Unix epoch): ${cache.get('lastSaleTime', null)}`);
 
